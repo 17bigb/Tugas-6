@@ -64,7 +64,6 @@ public class Kontakku extends AppCompatActivity {
         btnSubmit.setOnClickListener(v -> {
             if (etName.getText().toString().equals("") ||
                     etNumber.getText().toString().equals("") ||
-                    etInstagram.getText().toString().equals("") ||
                     etGroup.getText().toString().equals("") ){
                 Toast.makeText(this, "Please fill in the entire form", Toast.LENGTH_SHORT).show();
             } else {

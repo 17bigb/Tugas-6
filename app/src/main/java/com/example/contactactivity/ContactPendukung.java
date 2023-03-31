@@ -49,7 +49,7 @@ public class ContactPendukung extends RecyclerView.Adapter<ContactPendukung.Cont
 
         holder.TampilanCall.setOnClickListener(v -> {
             Intent intent = new Intent(Intent.ACTION_CALL);
-            intent.setData(Uri.parse("tel:"+contact.getNumber()));
+            intent.setData(Uri.parse("tel :"+contact.getNumber()));
             if (ActivityCompat.checkSelfPermission(context,
                     Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
                 ActivityCompat.requestPermissions((Activity) context, new String[]{Manifest.permission.CALL_PHONE}, 1);
@@ -67,14 +67,12 @@ public class ContactPendukung extends RecyclerView.Adapter<ContactPendukung.Cont
         holder.ContactLayout.setOnClickListener(v -> {
             String dataName = holder.TampilanName.getText().toString();
             String dataNumber = holder.TampilanNumber.getText().toString();
-            String dataInstagram = contact.getInstagram();
             String dataGroup = contact.getGroup();
 
             Intent intent = new Intent(context, KontakDetail.class);
             Bundle bundle = new Bundle();
             bundle.putString("name", dataName);
             bundle.putString("number", dataNumber);
-            bundle.putString("instagram", dataInstagram);
             bundle.putString("group", dataGroup);
             intent.putExtras(bundle);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
