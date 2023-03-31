@@ -1,7 +1,5 @@
 package com.example.contactactivity;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 
 
@@ -11,7 +9,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,14 +22,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ContactViewHolder> {
+public class ContactPendukung extends RecyclerView.Adapter<ContactPendukung.ContactViewHolder> {
 
     private Context context;
     private List<ContactModel> contactList;
 
     private static ClickListener clickListener;
 
-    public ContactAdapter(Context context, ArrayList<ContactModel> contactList){
+    public ContactPendukung(Context context, ArrayList<ContactModel> contactList){
         this.context = context;
         this.contactList = contactList;
     }
@@ -40,17 +37,17 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ContactV
     @NonNull
     @Override
     public ContactViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_contact, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item, parent, false);
         return new ContactViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ContactViewHolder holder, int position) {
         final ContactModel contact = contactList.get(position);
-        holder.tvName.setText(contact.getName());
-        holder.tvNumber.setText(contact.getNumber());
+        holder.TampilanName.setText(contact.getName());
+        holder.TampilanNumber.setText(contact.getNumber());
 
-        holder.tvCall.setOnClickListener(v -> {
+        holder.TampilanCall.setOnClickListener(v -> {
             Intent intent = new Intent(Intent.ACTION_CALL);
             intent.setData(Uri.parse("tel:"+contact.getNumber()));
             if (ActivityCompat.checkSelfPermission(context,
@@ -61,24 +58,24 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ContactV
             context.startActivity(intent);
         });
 
-        holder.tvMessage.setOnClickListener(v -> {
+        holder.TampilanMessage.setOnClickListener(v -> {
             Intent intent = new Intent(Intent.ACTION_SENDTO);
             intent.setData(Uri.parse("sms:"+contact.getNumber()));
             context.startActivity(intent);
         });
 
-        holder.contactLayout.setOnClickListener(v -> {
-            String dataName = holder.tvName.getText().toString();
-            String dataNumber = holder.tvNumber.getText().toString();
+        holder.ContactLayout.setOnClickListener(v -> {
+            String dataName = holder.TampilanName.getText().toString();
+            String dataNumber = holder.TampilanNumber.getText().toString();
             String dataInstagram = contact.getInstagram();
             String dataGroup = contact.getGroup();
 
-            Intent intent = new Intent(context, DetailContactActivity.class);
+            Intent intent = new Intent(context, KontakDetail.class);
             Bundle bundle = new Bundle();
-            bundle.putString("cname", dataName);
-            bundle.putString("cnumber", dataNumber);
-            bundle.putString("cinstagram", dataInstagram);
-            bundle.putString("cgroup", dataGroup);
+            bundle.putString("name", dataName);
+            bundle.putString("number", dataNumber);
+            bundle.putString("instagram", dataInstagram);
+            bundle.putString("group", dataGroup);
             intent.putExtras(bundle);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(intent);
@@ -93,20 +90,20 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ContactV
 
     public class ContactViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        LinearLayout contactLayout;
-        TextView tvName, tvNumber, tvCall, tvMessage, tvWhatsapp, tvDelete;
+        LinearLayout ContactLayout;
+        TextView TampilanName, TampilanNumber, TampilanCall, TampilanMessage, TampilanDelete;
 
         public ContactViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            contactLayout = itemView.findViewById(R.id.contact_layout);
-            tvDelete  = itemView.findViewById(R.id.tv_delete);
-            tvName = itemView.findViewById(R.id.tv_name);
-            tvNumber = itemView.findViewById(R.id.tv_number);
-            tvCall = itemView.findViewById(R.id.tv_call);
-            tvMessage = itemView.findViewById(R.id.tv_message);
+            ContactLayout = itemView.findViewById(R.id.contactLayout);
+            TampilanDelete = itemView.findViewById(R.id.Tampilandelete);
+            TampilanName = itemView.findViewById(R.id.Tampilanname);
+            TampilanNumber = itemView.findViewById(R.id.Tampilannumber);
+            TampilanCall = itemView.findViewById(R.id.Tampilancall);
+            TampilanMessage = itemView.findViewById(R.id.Tampilanmessage);
 
-            tvDelete.setOnClickListener(this);
+            TampilanDelete.setOnClickListener(this);
         }
 
         @Override
@@ -115,8 +112,8 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ContactV
         }
     }
 
-    public void setOnItemClickListener(ContactAdapter.ClickListener clickListener) {
-        ContactAdapter.clickListener = clickListener;
+    public void setOnItemClickListener(ContactPendukung.ClickListener clickListener) {
+        ContactPendukung.clickListener = clickListener;
     }
 
     public interface ClickListener {

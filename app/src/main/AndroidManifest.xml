@@ -12,16 +12,16 @@
         android:theme="@style/Theme.ContactActivity"
         tools:targetApi="31">
         <activity
-            android:name=".DetailContactActivity"
+            android:name=".KontakDetail"
             android:exported="false" />
         <activity
             android:name=".ContactModel"
             android:exported="false" />
         <activity
-            android:name=".ContactAdapter"
+            android:name=".ContactPendukung"
             android:exported="false" />
         <activity
-            android:name=".ContactActivity"
+            android:name=".Kontakku"
             android:exported="false" />
 
         <activity
