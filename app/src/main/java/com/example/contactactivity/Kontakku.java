@@ -22,7 +22,7 @@ public class Kontakku extends AppCompatActivity {
 
     private TextView option;
     private LinearLayout layAddContact;
-    private EditText etName, etNumber, etInstagram, etGroup;
+    private EditText etName, etNumber, etGroup;
     private Button btnClear, btnSubmit;
 
     private ArrayList<ContactModel> contactList = new ArrayList<>();
@@ -40,7 +40,6 @@ public class Kontakku extends AppCompatActivity {
         option = findViewById(R.id.tvoption);
         etName = findViewById(R.id.Username);
         etNumber = findViewById(R.id.Usernumber);
-        etInstagram = findViewById(R.id.Userinstagram);
         etGroup = findViewById(R.id.Usergroup);
         btnClear = findViewById(R.id.bttnclear);
         btnSubmit = findViewById(R.id.bttnsubmit);
@@ -67,7 +66,7 @@ public class Kontakku extends AppCompatActivity {
                     etGroup.getText().toString().equals("") ){
                 Toast.makeText(this, "Please fill in the entire form", Toast.LENGTH_SHORT).show();
             } else {
-                contactList.add(new ContactModel(etName.getText().toString(), etNumber.getText().toString(), etGroup.getText().toString(), etInstagram.getText().toString()));
+                contactList.add(new ContactModel(etName.getText().toString(), etNumber.getText().toString(), etGroup.getText().toString()));
                 contactAdapter = new ContactPendukung(this, contactList);
                 recyclerView.setAdapter(contactAdapter);
                 recyclerView.setVisibility(View.VISIBLE);
@@ -75,11 +74,11 @@ public class Kontakku extends AppCompatActivity {
             }
         });
 
-        contactList.add(new ContactModel("Puan Maharani", "+6222696969", "Dewan Pencuri", "puanmaharani"));
-        contactList.add(new ContactModel("Megawati", "+622119020", "Mantan Presiden Katanya", "presidenmegawati"));
-        contactList.add(new ContactModel("Maruf Amin", "+6299029384", "Katanya Wapres", "marufAFK"));
-        contactList.add(new ContactModel("Ganjar Prabowo", "+6230219235", "Skip", "ganjarPrabowo"));
-        contactList.add(new ContactModel("Real Madrid WinUCL2023", "+6215151515", "KING Europe", "realmadrid"));
+        contactList.add(new ContactModel("Puan Maharani", "+6222696969", "Dewan Pencuri"));
+        contactList.add(new ContactModel("Megawati", "+622119020", "Mantan Presiden Katanya"));
+        contactList.add(new ContactModel("Maruf Amin", "+6299029384", "Katanya Wapres"));
+        contactList.add(new ContactModel("Ganjar Prabowo", "+6230219235", "Skip"));
+        contactList.add(new ContactModel("Real Madrid WinUCL2023", "+6215151515", "KING Europe"));
 
         contactAdapter = new ContactPendukung(this, contactList);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(Kontakku.this);
@@ -95,7 +94,6 @@ public class Kontakku extends AppCompatActivity {
     public void clearData(){
         etName.setText("");
         etNumber.setText("");
-        etInstagram.setText("");
         etGroup.setText("");
     }
 }

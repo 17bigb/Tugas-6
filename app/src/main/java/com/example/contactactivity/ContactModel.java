@@ -8,10 +8,9 @@ public class ContactModel {
 
     private String name, number, group, instagram;
 
-    public ContactModel(String name, String number, String group, String instagram) {
+    public ContactModel(String name, String number, String group) {
         this.name = name;
         this.number = number;
-        this.group = group;
         this.instagram = instagram;
     }
 
@@ -37,14 +36,6 @@ public class ContactModel {
 
     public void setGroup(String group) {
         this.group = group;
-    }
-
-    public String getInstagram() {
-        return instagram;
-    }
-
-    public void setInstagram(String instagram) {
-        this.instagram = instagram;
     }
 
 }
