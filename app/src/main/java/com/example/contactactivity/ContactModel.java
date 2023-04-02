@@ -11,7 +11,6 @@ public class ContactModel {
     public ContactModel(String name, String number, String group) {
         this.name = name;
         this.number = number;
-        this.instagram = instagram;
     }
 
     public String getName() {

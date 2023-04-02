@@ -47,14 +47,10 @@ public class ContactPendukung extends RecyclerView.Adapter<ContactPendukung.Cont
         holder.TampilanName.setText(contact.getName());
         holder.TampilanNumber.setText(contact.getNumber());
 
+
         holder.TampilanCall.setOnClickListener(v -> {
-            Intent intent = new Intent(Intent.ACTION_CALL);
-            intent.setData(Uri.parse("tel :"+contact.getNumber()));
-            if (ActivityCompat.checkSelfPermission(context,
-                    Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
-                ActivityCompat.requestPermissions((Activity) context, new String[]{Manifest.permission.CALL_PHONE}, 1);
-                return;
-            }
+            Intent intent = new Intent(Intent.ACTION_DIAL);
+            intent.setData(Uri.parse("tel:" +contact.getNumber()));
             context.startActivity(intent);
         });
 

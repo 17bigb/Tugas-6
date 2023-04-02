@@ -40,13 +40,8 @@ public class KontakDetail extends AppCompatActivity {
             grup.setText(getGroup);
 
             btCall.setOnClickListener(v -> {
-                Intent intent = new Intent(Intent.ACTION_CALL);
-                intent.setData(Uri.parse("tel:" + getNumber));
-                if (ActivityCompat.checkSelfPermission(this,
-                        Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
-                    ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CALL_PHONE}, 1);
-                    return;
-                }
+                Intent intent = new Intent(Intent.ACTION_DIAL);
+                intent.setData(Uri.parse("tel:" +getNumber));
                 startActivity(intent);
             });
 
