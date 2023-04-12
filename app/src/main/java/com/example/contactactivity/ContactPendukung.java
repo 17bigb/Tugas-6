@@ -1,5 +1,6 @@
 package com.example.contactactivity;
 
+import android.content.ClipData;
 import android.os.Bundle;
 
 
@@ -45,6 +46,7 @@ public class ContactPendukung extends RecyclerView.Adapter<ContactPendukung.Cont
     public void onBindViewHolder(@NonNull ContactViewHolder holder, int position) {
         final ContactModel contact = contactList.get(position);
         holder.TampilanName.setText(contact.getName());
+        holder.TampilanNIM.setText(contact.getNim());
         holder.TampilanNumber.setText(contact.getNumber());
 
 
@@ -62,12 +64,14 @@ public class ContactPendukung extends RecyclerView.Adapter<ContactPendukung.Cont
 
         holder.ContactLayout.setOnClickListener(v -> {
             String dataName = holder.TampilanName.getText().toString();
+            String dataNim = holder.TampilanNIM.getText().toString();
             String dataNumber = holder.TampilanNumber.getText().toString();
             String dataGroup = contact.getGroup();
 
             Intent intent = new Intent(context, KontakDetail.class);
             Bundle bundle = new Bundle();
             bundle.putString("name", dataName);
+            bundle.putString("nim", dataNim);
             bundle.putString("number", dataNumber);
             bundle.putString("group", dataGroup);
             intent.putExtras(bundle);
@@ -83,9 +87,8 @@ public class ContactPendukung extends RecyclerView.Adapter<ContactPendukung.Cont
     }
 
     public class ContactViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-
         LinearLayout ContactLayout;
-        TextView TampilanName, TampilanNumber, TampilanCall, TampilanMessage, TampilanDelete;
+        TextView TampilanName, TampilanNIM, TampilanNumber, TampilanCall, TampilanMessage, TampilanDelete;
 
         public ContactViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -93,6 +96,7 @@ public class ContactPendukung extends RecyclerView.Adapter<ContactPendukung.Cont
             ContactLayout = itemView.findViewById(R.id.contactLayout);
             TampilanDelete = itemView.findViewById(R.id.Tampilandelete);
             TampilanName = itemView.findViewById(R.id.Tampilanname);
+            TampilanNIM = itemView.findViewById(R.id.TampilanNIM);
             TampilanNumber = itemView.findViewById(R.id.Tampilannumber);
             TampilanCall = itemView.findViewById(R.id.Tampilancall);
             TampilanMessage = itemView.findViewById(R.id.Tampilanmessage);

@@ -14,6 +14,7 @@ import android.net.Uri;
 import android.widget.TextView;
 
 public class KontakDetail extends AppCompatActivity {
+
     TextView nama, number, grup, bnBack;
     TextView btCall, btMess;
 

@@ -19,10 +19,10 @@ import java.util.ArrayList;
 public class Kontakku extends AppCompatActivity {
 
     private RecyclerView recyclerView;
-
     private TextView option;
     private LinearLayout layAddContact;
-    private EditText etName, etNumber, etGroup;
+
+    private EditText etNIM, etName, etNumber, etGroup;
     private Button btnClear, btnSubmit;
 
     private ArrayList<ContactModel> contactList = new ArrayList<>();
@@ -39,6 +39,7 @@ public class Kontakku extends AppCompatActivity {
         layAddContact = findViewById(R.id.layoutAdd);
         option = findViewById(R.id.tvoption);
         etName = findViewById(R.id.Username);
+        etNIM = findViewById(R.id.nim);
         etNumber = findViewById(R.id.Usernumber);
         etGroup = findViewById(R.id.Usergroup);
         btnClear = findViewById(R.id.bttnclear);
@@ -62,11 +63,12 @@ public class Kontakku extends AppCompatActivity {
 
         btnSubmit.setOnClickListener(v -> {
             if (etName.getText().toString().equals("") ||
+                    etNIM.getText().toString().equals("") ||
                     etNumber.getText().toString().equals("") ||
                     etGroup.getText().toString().equals("") ){
                 Toast.makeText(this, "Please fill in the entire form", Toast.LENGTH_SHORT).show();
             } else {
-                contactList.add(new ContactModel(etName.getText().toString(), etNumber.getText().toString(), etGroup.getText().toString()));
+                contactList.add(new ContactModel(etNIM.getText().toString(), etName.getText().toString(), etNumber.getText().toString(), etGroup.getText().toString()));
                 contactAdapter = new ContactPendukung(this, contactList);
                 recyclerView.setAdapter(contactAdapter);
                 recyclerView.setVisibility(View.VISIBLE);
@@ -74,11 +76,11 @@ public class Kontakku extends AppCompatActivity {
             }
         });
 
-        contactList.add(new ContactModel("Puan Maharani", "+6222696969", "Dewan Pencuri"));
-        contactList.add(new ContactModel("Megawati", "+622119020", "Mantan Presiden Katanya"));
-        contactList.add(new ContactModel("Maruf Amin", "+6299029384", "Katanya Wapres"));
-        contactList.add(new ContactModel("Ganjar Prabowo", "+6230219235", "Skip"));
-        contactList.add(new ContactModel("Real Madrid WinUCL2023", "+6215151515", "KING Europe"));
+        contactList.add(new ContactModel("215150701121","Puan Maharani", "+6222696969", "Dewan Pencuri"));
+        contactList.add(new ContactModel("215150701122","Megawati", "+622119020", "Mantan Presiden Katanya"));
+        contactList.add(new ContactModel("215150701123","Maruf Amin", "+6299029384", "Katanya Wapres"));
+        contactList.add(new ContactModel("215150701124","Ganjar Prabowo", "+6230219235", "Skip"));
+        contactList.add(new ContactModel("215150701125","Real Madrid WinUCL2023", "+6215151515", "KING Europe"));
 
         contactAdapter = new ContactPendukung(this, contactList);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(Kontakku.this);
@@ -93,6 +95,7 @@ public class Kontakku extends AppCompatActivity {
 
     public void clearData(){
         etName.setText("");
+        etNIM.setText("");
         etNumber.setText("");
         etGroup.setText("");
     }

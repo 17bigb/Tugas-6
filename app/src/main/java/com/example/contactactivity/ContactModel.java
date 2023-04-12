@@ -6,11 +6,22 @@ import android.os.Bundle;
 
 public class ContactModel {
 
-    private String name, number, group, instagram;
+    private String nim,name, number, group;
 
-    public ContactModel(String name, String number, String group) {
+    public ContactModel(String NIM, String name, String number, String group) {
         this.name = name;
         this.number = number;
+        this.nim = NIM;
+        this.group = group;
+
+    }
+
+    public String getNim(){
+        return nim;
+    }
+
+    public void setNim(String nim) {
+        this.nim = nim;
     }
 
     public String getName() {
